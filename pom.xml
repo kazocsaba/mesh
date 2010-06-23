@@ -24,7 +24,7 @@
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<configuration>
 					<offlineLinks>
-						<offlineLink><url>${vision-javadoc-path}/Matrix</url><location>../Matrix</location></offlineLink>
+						<offlineLink><url>../Matrix</url><location>${vision-javadoc-path}/Matrix</location></offlineLink>
 					</offlineLinks>
 				</configuration>
 			</plugin>
