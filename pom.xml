@@ -23,10 +23,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-javadoc-plugin</artifactId>
 				<configuration>
-					<links>
-						<link>../../Matrix</link>
-						<link>${java-api-url}</link>
-					</links>
+					<offlineLinks>
+						<offlineLink><url>${vision-javadoc-path}/Matrix</url><location>../Matrix</location></offlineLink>
+					</offlineLinks>
 				</configuration>
 			</plugin>
 		</plugins>
