@@ -9,9 +9,8 @@ import kcsaba.math.matrix.Vector3;
  * list of {@code Vector3} and the triangles as a list of point index triples.
  * @author Kazó Csaba
  */
-public class IndexTriangleMeshImpl implements IndexedTriangleMesh {
+public class IndexedTriangleMeshImpl extends PointListImpl implements IndexedTriangleMesh {
 
-	private final List<Vector3> points;
 	private final List<int[]> triangles;
 
 	/**
@@ -23,12 +22,9 @@ public class IndexTriangleMeshImpl implements IndexedTriangleMesh {
 	 * @throws IllegalArgumentException if an array in the triangle list has a length different from 3
 	 * @throws IndexOutOfBoundsException if a point index is out of range
 	 */
-	public IndexTriangleMeshImpl(List<Vector3> points, List<int[]> triangles) {
-		this.points = points;
+	public IndexedTriangleMeshImpl(List<Vector3> points, List<int[]> triangles) {
+		super(points);
 		this.triangles = triangles;
-		for (int i = 0; i < points.size(); i++) {
-			if (points.get(i)==null) throw new NullPointerException("Null element in point list");
-		}
 		for (int i=0; i<triangles.size(); i++) {
 			int[] tri=triangles.get(i);
 			if (tri==null) throw new NullPointerException("Null element in triangle list");
@@ -39,16 +35,6 @@ public class IndexTriangleMeshImpl implements IndexedTriangleMesh {
 		}
 	}
 
-
-	@Override
-	public int getPointCount() {
-		return points.size();
-	}
-
-	@Override
-	public Vector3 getPoint(int index) {
-		return points.get(index);
-	}
 
 	@Override
 	public int getTriangleCount() {
