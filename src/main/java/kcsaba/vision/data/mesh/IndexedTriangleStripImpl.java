@@ -9,7 +9,7 @@ import kcsaba.math.matrix.Vector3;
  * @author Kazó Csaba
  */
 public class IndexedTriangleStripImpl extends AbstractIndexedTriangleStrip implements IndexedTriangleStrip {
-
+	private List<Vector3> points;
 	private List<int[]> indices;
 	
 	private class StripPoints implements PointList {
@@ -40,7 +40,10 @@ public class IndexedTriangleStripImpl extends AbstractIndexedTriangleStrip imple
 	 * @throws IndexOutOfBoundsException if a point index is out of range
 	 */
 	public IndexedTriangleStripImpl(List<Vector3> points, List<int[]> strips) {
-		super(points);
+		this.points=points;
+		for (int i = 0; i < points.size(); i++) {
+			if (points.get(i)==null) throw new NullPointerException("Null element in point list");
+		}
 		if (strips.isEmpty()) throw new IllegalArgumentException();
 		for (int[] strip: strips) {
 			if (strip.length<3) throw new IllegalArgumentException();
@@ -49,8 +52,16 @@ public class IndexedTriangleStripImpl extends AbstractIndexedTriangleStrip imple
 		}
 		this.indices=strips;
 	}
-	
-	
+
+	@Override
+	public int getPointCount() {
+		return points.size();
+	}
+
+	@Override
+	public Vector3 getPoint(int index) {
+		return points.get(index);
+	}
 	
 	@Override
 	public int getStripPointIndex(int strip, int point) {

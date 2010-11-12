@@ -1,6 +1,5 @@
 package kcsaba.vision.data.mesh;
 
-import java.util.List;
 import java.util.NoSuchElementException;
 import kcsaba.math.matrix.Vector3;
 
@@ -9,17 +8,7 @@ import kcsaba.math.matrix.Vector3;
  * and the {@code PointList} aspects.
  * @author Kazó Csaba
  */
-public abstract class AbstractIndexedTriangleStrip extends PointListImpl implements IndexedTriangleStrip {
-
-	/**
-	 * Creates a new instance backed by the specified list of vectors. The list is stored by reference and should not
-	 * be modified.
-	 * @param points the list of points
-	 * @throws NullPointerException if either the argument or an element of the list is {@code null}
-	 */
-	public AbstractIndexedTriangleStrip(List<Vector3> points) {
-		super(points);
-	}
+public abstract class AbstractIndexedTriangleStrip implements IndexedTriangleStrip {
 
 	@Override
 	public int getTriangleCount() {
