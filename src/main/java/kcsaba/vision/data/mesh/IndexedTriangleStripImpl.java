@@ -81,6 +81,7 @@ public class IndexedTriangleStripImpl extends AbstractIndexedTriangleStrip imple
 	private class Iterator implements TriangleListIterator {
 		private int stripCursor=-1;
 		private int pointCursor;
+		private boolean flip;
 		@Override
 		public boolean hasNext() {
 			return stripCursor<getStripCount()-1 || pointCursor+3<getStripLength(stripCursor);
@@ -92,8 +93,11 @@ public class IndexedTriangleStripImpl extends AbstractIndexedTriangleStrip imple
 			if (stripCursor==-1 || pointCursor+3==getStripLength(stripCursor)) {
 				stripCursor++;
 				pointCursor=0;
-			} else
+				flip=false;
+			} else {
 				pointCursor++;
+				flip=!flip;
+			}
 			
 		}
 
@@ -104,12 +108,12 @@ public class IndexedTriangleStripImpl extends AbstractIndexedTriangleStrip imple
 
 		@Override
 		public Vector3 getV2() {
-			return getPoint(indices.get(stripCursor)[pointCursor+1]);
+			return getPoint(indices.get(stripCursor)[pointCursor+(flip ? 2 : 1)]);
 		}
 
 		@Override
 		public Vector3 getV3() {
-			return getPoint(indices.get(stripCursor)[pointCursor+2]);
+			return getPoint(indices.get(stripCursor)[pointCursor+(flip ? 1 : 2)]);
 		}
 		
 	}

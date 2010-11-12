@@ -7,7 +7,7 @@ package kcsaba.vision.data.mesh;
 public interface TriangleStrip extends TriangleMesh {
 	/**
 	 * Returns the number of strips this mesh is composed of.
-	 * @returns the number of strips
+	 * @return the number of strips
 	 */
 	public int getStripCount();
 	/**

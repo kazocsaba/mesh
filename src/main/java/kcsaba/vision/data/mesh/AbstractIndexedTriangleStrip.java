@@ -36,7 +36,14 @@ public abstract class AbstractIndexedTriangleStrip extends PointListImpl impleme
 		int trianglesInPreviousStrips=0;
 		for (int currentStrip=0; currentStrip<getStripCount(); currentStrip++) {
 			int trianglesInCurrentStrip=getStripLength(currentStrip)-2;
-			if (triangle<trianglesInPreviousStrips+trianglesInCurrentStrip) return getStripPointIndex(currentStrip, (triangle-trianglesInPreviousStrips)+point);
+			if (triangle<trianglesInPreviousStrips+trianglesInCurrentStrip) {
+				triangle=triangle-trianglesInPreviousStrips;
+				boolean flip=(triangle % 2) == 0;
+				if (flip) {
+					if (point==2) point=1; else if (point==1) point=2;
+				}
+				return getStripPointIndex(currentStrip, triangle+point);
+			}
 			trianglesInPreviousStrips+=trianglesInCurrentStrip;
 		}
 		throw new IndexOutOfBoundsException();
