@@ -1,6 +1,7 @@
 package kcsaba.vision.data.mesh;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import kcsaba.math.matrix.Vector3;
 
 /**
@@ -54,4 +55,48 @@ public abstract class AbstractIndexedTriangleStrip extends PointListImpl impleme
 		return getPoint(getTrianglePointIndex(triangle, point));
 	}
 
+	@Override
+	public TriangleListIterator iterateTriangles() {
+		return new Iterator();
+	}
+	
+	private class Iterator implements TriangleListIterator {
+		private int stripCursor=-1;
+		private int pointCursor;
+		private boolean flip;
+		@Override
+		public boolean hasNext() {
+			return stripCursor<getStripCount()-1 || pointCursor+3<getStripLength(stripCursor);
+		}
+
+		@Override
+		public void next() {
+			if (!hasNext()) throw new NoSuchElementException();
+			if (stripCursor==-1 || pointCursor+3==getStripLength(stripCursor)) {
+				stripCursor++;
+				pointCursor=0;
+				flip=false;
+			} else {
+				pointCursor++;
+				flip=!flip;
+			}
+			
+		}
+
+		@Override
+		public Vector3 getV1() {
+			return getPoint(getStripPointIndex(stripCursor,pointCursor));
+		}
+
+		@Override
+		public Vector3 getV2() {
+			return getPoint(getStripPointIndex(stripCursor,pointCursor+(flip ? 2 : 1)));
+		}
+
+		@Override
+		public Vector3 getV3() {
+			return getPoint(getStripPointIndex(stripCursor,pointCursor+(flip ? 1 : 2)));
+		}
+		
+	}
 }
