@@ -1,6 +1,6 @@
-package kcsaba.vision.data.mesh;
+package hu.kazocsaba.v3d.mesh;
 
-import kcsaba.math.matrix.Vector3;
+import hu.kazocsaba.math.matrix.Vector3;
 
 /**
  * A triangle mesh which provides a list of points and triples of point indices.

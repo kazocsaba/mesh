@@ -1,7 +1,7 @@
-package kcsaba.vision.data.mesh;
+package hu.kazocsaba.v3d.mesh;
 
 import java.util.NoSuchElementException;
-import kcsaba.math.matrix.Vector3;
+import hu.kazocsaba.math.matrix.Vector3;
 
 /**
  * Abstract superclass for {@code IndexedTriangleStrip} objects implementing the {@code IndexedTriangleMesh}

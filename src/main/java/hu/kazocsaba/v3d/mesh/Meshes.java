@@ -1,8 +1,8 @@
-package kcsaba.vision.data.mesh;
+package hu.kazocsaba.v3d.mesh;
 
 import java.util.ArrayList;
 import java.util.List;
-import kcsaba.math.matrix.Vector3;
+import hu.kazocsaba.math.matrix.Vector3;
 
 /**
  * Utility methods operating on meshes.

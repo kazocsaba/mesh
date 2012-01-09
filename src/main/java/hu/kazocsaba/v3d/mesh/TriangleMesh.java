@@ -1,4 +1,4 @@
-package kcsaba.vision.data.mesh;
+package hu.kazocsaba.v3d.mesh;
 
 /**
  * A mesh composed of a set of triangles.

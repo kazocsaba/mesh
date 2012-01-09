@@ -1,8 +1,8 @@
-package kcsaba.vision.data.mesh;
+package hu.kazocsaba.v3d.mesh;
 
 import java.util.List;
 import java.util.NoSuchElementException;
-import kcsaba.math.matrix.Vector3;
+import hu.kazocsaba.math.matrix.Vector3;
 
 /**
  * A triangle mesh which just stores a list of points. Triangle {@code i} is formed by points

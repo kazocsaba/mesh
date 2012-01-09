@@ -1,7 +1,7 @@
-package kcsaba.vision.data.mesh;
+package hu.kazocsaba.v3d.mesh;
 
 import java.util.List;
-import kcsaba.math.matrix.Vector3;
+import hu.kazocsaba.math.matrix.Vector3;
 
 /**
  * An implementation of {@code IndexedTriangleStrip} which stores the points in a list, and stores the

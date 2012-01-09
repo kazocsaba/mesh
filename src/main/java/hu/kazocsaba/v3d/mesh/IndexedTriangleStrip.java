@@ -1,4 +1,4 @@
-package kcsaba.vision.data.mesh;
+package hu.kazocsaba.v3d.mesh;
 
 /**
  * A triangle strip mesh where the strips use indices to reference the points.

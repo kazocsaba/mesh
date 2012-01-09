@@ -1,6 +1,6 @@
-package kcsaba.vision.data.mesh;
+package hu.kazocsaba.v3d.mesh;
 
-import kcsaba.math.matrix.Vector3;
+import hu.kazocsaba.math.matrix.Vector3;
 
 /**
  * An iterator over a list of triangles. Works similarly as {@link java.util.Iterator}. The vertices of the trianges are available after
